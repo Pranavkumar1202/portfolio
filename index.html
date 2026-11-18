@@ -111,9 +111,10 @@ footer{text-align:center;padding:40px 0 60px;color:var(--soft);font-family:'Spac
   <div class="wrap">
     <div class="eyebrow">Open to Data Engineering &amp; AI roles</div>
     <h1>Pranavkumar M<small>Data &amp; AI Engineer</small></h1>
-    <p class="sub">I turn messy data into pipelines that hold up. Three internships and four projects of cleaning, joining, validating and shipping data that people actually trust.</p>
+    <p class="sub">I turn messy data into pipelines that hold up. Internship experience and four end-to-end projects of cleaning, joining, validating and shipping data that people actually trust.</p>
     <a href="#projects" class="btn primary">Enter the work ↓</a>
     <a href="Pranav_resume.pdf" target="_blank" rel="noopener" class="btn">View resume</a>
+    <a href="https://github.com/Pranavkumar1202" target="_blank" rel="noopener" class="btn">GitHub</a>
     <a href="#contact" class="btn">Contact</a>
   </div>
 </header>
@@ -156,12 +157,12 @@ footer{text-align:center;padding:40px 0 60px;color:var(--soft);font-family:'Spac
   <div class="chap">Chapter Three</div><h2 class="reveal">Skills</h2>
   <div class="cards">
     <div class="card reveal"><div class="meta">LANGUAGES</div><div class="tags"><span class="tag">Python</span><span class="tag">SQL</span></div></div>
-    <div class="card reveal"><div class="meta">DATA ENGINEERING</div><div class="tags"><span class="tag">ETL Pipelines</span><span class="tag">Data Validation</span><span class="tag">Data Modeling</span><span class="tag">Apache Airflow</span><span class="tag">dbt</span></div></div>
-    <div class="card reveal"><div class="meta">MACHINE LEARNING</div><div class="tags"><span class="tag">Random Forest</span><span class="tag">Logistic Regression</span><span class="tag">Feature Engineering</span></div></div>
-    <div class="card reveal"><div class="meta">TOOLS</div><div class="tags"><span class="tag">Power BI</span><span class="tag">MySQL</span><span class="tag">Git</span><span class="tag">Jupyter</span><span class="tag">Docker</span><span class="tag">PostgreSQL</span></div></div>
-    <div class="card reveal"><div class="meta">LIBRARIES</div><div class="tags"><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Scikit-learn</span><span class="tag">Matplotlib</span></div></div>
-    <div class="card reveal"><div class="meta">CONCEPTS</div><div class="tags"><span class="tag">Joins</span><span class="tag">Aggregations</span><span class="tag">Indexing</span><span class="tag">Performance Tuning</span></div></div>
-    <div class="card reveal"><div class="meta">EMERGING TECH</div><div class="tags"><span class="tag">NLP</span><span class="tag">Snowflake</span><span class="tag">Prompt Engineering</span></div></div>
+    <div class="card reveal"><div class="meta">DATA ENGINEERING &amp; PIPELINES</div><div class="tags"><span class="tag">ETL Pipelines</span><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">MySQL</span><span class="tag">PostgreSQL</span><span class="tag">Data Validation</span><span class="tag">Data Modeling</span></div></div>
+    <div class="card reveal"><div class="meta">ANALYSIS &amp; BI</div><div class="tags"><span class="tag">Power BI (DAX)</span><span class="tag">Tableau</span><span class="tag">Advanced Excel</span><span class="tag">EDA</span><span class="tag">KPI Reporting</span></div></div>
+    <div class="card reveal"><div class="meta">MACHINE LEARNING &amp; AI</div><div class="tags"><span class="tag">scikit-learn</span><span class="tag">Classification</span><span class="tag">Random Forest</span><span class="tag">Logistic Regression</span><span class="tag">Model Evaluation</span><span class="tag">Feature Engineering</span><span class="tag">Sentence Embeddings</span><span class="tag">NLP</span><span class="tag">RAG</span></div></div>
+    <div class="card reveal"><div class="meta">APPS &amp; TOOLS</div><div class="tags"><span class="tag">Streamlit</span><span class="tag">FastAPI</span><span class="tag">pytest</span><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">GitHub Actions (CI)</span><span class="tag">Jupyter</span></div></div>
+    <div class="card reveal"><div class="meta">ALSO FAMILIAR WITH</div><div class="tags"><span class="tag">Apache Airflow</span><span class="tag">dbt</span><span class="tag">Docker</span><span class="tag">Azure</span><span class="tag">PySpark</span><span class="tag">Snowflake</span></div></div>
+    <div class="card reveal"><div class="meta">CURRENTLY LEARNING</div><div class="tags"><span class="tag">LangChain</span><span class="tag">LangGraph</span><span class="tag">PyTorch</span></div></div>
   </div>
 </div></section>
 
@@ -169,33 +170,25 @@ footer{text-align:center;padding:40px 0 60px;color:var(--soft);font-family:'Spac
   <div class="chap">Chapter Four</div><h2 class="reveal">Projects</h2>
   <div class="projects">
     <div class="card project reveal"><div class="pnum">01</div><div>
+      <h3>Job Market Intelligence Platform</h3><div class="meta">INDIVIDUAL PROJECT · NOV 2026</div>
+      <ul>
+        <li>Built an end-to-end job-market data pipeline, ingesting Adzuna API postings into PostgreSQL through re-runnable Python scripts that keep a raw layer and produce a cleaned, deduplicated table of 148 jobs.</li>
+        <li>Extracted skills at 82% precision and 96% recall on 30 hand-reviewed postings (500-character API snippets) with a 35-skill extractor, documenting labelling bias and error types.</li>
+        <li>Matched resumes to jobs and reported skill gaps by combining sentence-transformers embeddings with a confidence-weighted skill-overlap score, served through FastAPI and Streamlit.</li>
+        <li>Backed by a 27-test pytest suite with GitHub Actions CI.</li>
+      </ul>
+      <div class="tags"><span class="tag">Python</span><span class="tag">PostgreSQL</span><span class="tag">Adzuna API</span><span class="tag">Sentence Transformers</span><span class="tag">FastAPI</span><span class="tag">Streamlit</span><span class="tag">pytest</span><span class="tag">GitHub Actions</span></div>
+    </div></div>
+    <div class="card project reveal"><div class="pnum">02</div><div>
       <h3>ResumeIQ — AI Resume-to-JD Matcher</h3><div class="meta">INDIVIDUAL PROJECT · JUL 2026</div>
       <ul>
-        <li>Built an NLP pipeline using spaCy and regex-based preprocessing to extract, clean, and lemmatize resume/JD text.</li>
-        <li>Engineered a dual-scoring system combining TF-IDF cosine similarity and transformer-based sentence embeddings, backed by a 200+ term skills taxonomy for skill-gap detection.</li>
-        <li>Managed project setup, environment configuration, and version control using Git Bash, including virtual environment management and GitHub repository deployment.</li>
+        <li>Built and published a live Streamlit app that scores resumes against job descriptions, blending TF-IDF (40%) and all-MiniLM-L6-v2 sentence embeddings (60%) into one match score.</li>
+        <li>Flagged skill gaps against a 235+ term skills taxonomy tailored to Data Science, Data Analytics and Data Engineering roles, using a spaCy NLP pipeline.</li>
+        <li>Parsed PDF and Word resumes with PyPDF2 and python-docx, and published the code on GitHub.</li>
       </ul>
       <div class="tags"><span class="tag">spaCy</span><span class="tag">TF-IDF</span><span class="tag">Sentence Transformers</span><span class="tag">Streamlit</span><span class="tag">NLP</span></div>
     </div></div>
-    <div class="card project reveal"><div class="pnum">02</div><div>
-      <h3>Student Performance Monitoring &amp; Placement Analytics System</h3><div class="meta">TEAM PROJECT · MAY 2025</div>
-      <ul>
-        <li>Built an end-to-end ETL pipeline ingesting and transforming 250+ student academic and placement records.</li>
-        <li>Engineered 20+ analytical features, improving predictive performance and placement analysis.</li>
-        <li>Reached 88% accuracy with Random Forest (vs. 82% baseline Logistic Regression), validated with 5-fold cross-validation at 86%.</li>
-      </ul>
-      <div class="tags"><span class="tag">Python</span><span class="tag">Random Forest</span><span class="tag">Feature Engineering</span><span class="tag">ETL</span></div>
-    </div></div>
     <div class="card project reveal"><div class="pnum">03</div><div>
-      <h3>AI Tool Recommendation System</h3><div class="meta">TEAM PROJECT · MAY 2024</div>
-      <ul>
-        <li>Processed and transformed user preference data using Python and Pandas for structured recommendation analysis.</li>
-        <li>Built feature transformation and filtering pipelines to improve recommendation relevance.</li>
-        <li>Matched user requirements with suitable AI tools, cutting manual search effort by ~70%.</li>
-      </ul>
-      <div class="tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Recommendation Systems</span></div>
-    </div></div>
-    <div class="card project reveal"><div class="pnum">04</div><div>
       <h3>Job Application Tracker Pipeline</h3><div class="meta">INDIVIDUAL PROJECT · JUL 2026</div>
       <ul>
         <li>Built an end-to-end orchestrated data pipeline using Docker, PostgreSQL, Apache Airflow, and dbt to load, validate, transform, and test personal job-application data on a daily schedule.</li>
@@ -205,6 +198,16 @@ footer{text-align:center;padding:40px 0 60px;color:var(--soft);font-family:'Spac
       </ul>
       <div class="tags"><span class="tag">Docker</span><span class="tag">PostgreSQL</span><span class="tag">Apache Airflow</span><span class="tag">dbt</span><span class="tag">Power BI</span><span class="tag">Gmail API</span></div>
     </div></div>
+    <div class="card project reveal"><div class="pnum">04</div><div>
+      <h3>AI Student Performance Monitoring &amp; Placement Prediction System</h3><div class="meta">TEAM OF 4 · MAY 2025</div>
+      <ul>
+        <li>Raised placement-prediction accuracy from an 82% baseline to 88% (86% in 5-fold cross-validation) on 250+ student records from the 2025 batch, benchmarking Random Forest against Logistic Regression on 20+ ETL-engineered features.</li>
+        <li>Found academics, skill certifications and internships to be the main placement drivers through EDA.</li>
+        <li>Delivered a React and FastAPI app with RAG-based skill-gap guidance and an AI career-advisor chatbot for the department’s placement requirement, under guidance from the department HOD and mentorship from an industry professional.</li>
+        <li>Presented the paper at the IEEE-organized MRIET-2025 conference.</li>
+      </ul>
+      <div class="tags"><span class="tag">Python</span><span class="tag">Random Forest</span><span class="tag">Feature Engineering</span><span class="tag">ETL</span><span class="tag">EDA</span><span class="tag">React</span><span class="tag">FastAPI</span><span class="tag">RAG</span></div>
+    </div></div>
   </div>
 </div></section>
 
@@ -212,12 +215,12 @@ footer{text-align:center;padding:40px 0 60px;color:var(--soft);font-family:'Spac
   <div class="chap">Chapter Five</div><h2 class="reveal">Experience</h2>
   <div class="timeline">
     <div class="tl reveal">
-      <div class="meta">JUN 2025 – JAN 2026</div><h3 style="font-family:'DM Serif Display',serif;font-weight:400;font-size:24px">BDreamz Global Solutions Pvt. Ltd., Electronics City</h3>
+      <div class="meta">JUL 2025 – JAN 2026</div><h3 style="font-family:'DM Serif Display',serif;font-weight:400;font-size:24px">BDreamz Global Solutions Pvt. Ltd., Electronics City</h3>
       <div class="meta" style="color:var(--ink)">Data Science &amp; AI Intern</div>
       <ul>
-        <li>Designed and optimized ETL workflows using Python and SQL for analytics and KPI reporting.</li>
-        <li>Built data transformation pipelines with joins, aggregations, filtering, and validation.</li>
-        <li>Developed Power BI dashboards integrated with processed datasets, reducing manual reporting effort by approximately 40%.</li>
+        <li>Produced KPI reports on trainer-provided datasets over a six-month internship, writing SQL queries and building Python (Pandas) ETL workflows with data validation checks.</li>
+        <li>Cut manual reporting effort by about 1–2 hours per week by building Power BI dashboards and automating calculations with DAX.</li>
+        <li>Built and evaluated a customer churn prediction model on a public Kaggle dataset, cleaning the data and engineering features in Python (Pandas, scikit-learn).</li>
       </ul>
     </div>
     <div class="tl reveal">
@@ -245,9 +248,9 @@ footer{text-align:center;padding:40px 0 60px;color:var(--soft);font-family:'Spac
   <div class="chap">Chapter Six</div><h2 class="reveal">Certifications &amp; Education</h2>
   <div class="cards">
     <div class="card reveal"><h3>🎓 B.Tech, AI &amp; Data Science</h3><div class="meta">KNOWLEDGE INSTITUTE OF TECHNOLOGY · 2021–2025 · CGPA 7.5</div></div>
-    <div class="card reveal"><h3>📜 Data Science Masters Program</h3><div class="meta">BESANT TECHNOLOGIES · 2026</div></div>
-    <div class="card reveal"><h3>📜 Data Science &amp; AI</h3><div class="meta">FUTURESKILLS PRIME · 2026</div></div>
-    <div class="card reveal"><h3>☁️ Azure Data Fundamentals</h3><div class="meta">MICROSOFT · 2026</div></div>
+    <div class="card reveal"><h3>📜 Data Science Masters Program</h3><div class="meta">BESANT TECHNOLOGIES · JAN 2026</div></div>
+    <div class="card reveal"><h3>📜 Data Science &amp; AI — Gold (84%)</h3><div class="meta">NASSCOM FUTURESKILLS PRIME · JAN 2026</div></div>
+    <div class="card reveal"><h3>☁️ Azure Data Fundamentals</h3><div class="meta">MICROSOFT · JUN 2026</div></div>
   </div>
 </div></section>
 
@@ -259,6 +262,8 @@ footer{text-align:center;padding:40px 0 60px;color:var(--soft);font-family:'Spac
     <a class="btn primary" href="mailto:pranavkumar0656@gmail.com">✉ Email</a>
     <a class="btn" href="tel:+917397058245">📞 +91 7397058245</a>
     <a class="btn" href="https://www.linkedin.com/in/pranavkumar-m-904b8324b" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="btn" href="https://github.com/Pranavkumar1202" target="_blank" rel="noopener">GitHub</a>
+    <p style="margin-top:22px;font-family:'Space Mono',monospace;font-size:12px">📍 Hosur, Tamil Nadu, India</p>
   </div>
 </div></section>
 
