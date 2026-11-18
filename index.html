@@ -44,16 +44,23 @@ body.upside .brand{text-shadow:0 0 10px rgba(79,176,255,.35)}
 .links a:hover{color:var(--accent);text-shadow:var(--glow)}
 .flip{font-family:'Space Mono',monospace;font-size:12px;border:1px solid var(--accent);color:var(--accent);background:transparent;padding:6px 12px;border-radius:4px;cursor:pointer}
 .flip:hover{background:var(--accent);color:#000}
-@media(max-width:1000px){.links{display:none}.burger{display:flex}}
+html{scroll-padding-top:110px}
+.mquick{display:none;gap:8px;align-items:center}
+.mlinks{display:none;gap:8px;overflow-x:auto;white-space:nowrap;padding:8px 16px;border-top:1px solid var(--line);font-family:'Space Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:1px;scrollbar-width:none}
+.mlinks::-webkit-scrollbar{display:none}
+.mlinks a{flex:none;padding:5px 13px;border:1px solid var(--line);border-radius:20px}
+.mlinks a:active{border-color:var(--accent);color:var(--accent)}
+@media(max-width:1000px){
+  .links{display:none}.mquick{display:flex}.mlinks{display:flex}
+  header{padding-top:178px}
+  html{scroll-padding-top:150px}
+  body.flipped #prog{bottom:148px}
+  .brand{font-size:19px}
+  nav .flip{font-size:11px;padding:6px 9px}
+}
+@media(max-width:380px){.brand{font-size:16px;letter-spacing:0}nav .flip{padding:6px 7px}}
 .flip.risk-btn{border-color:var(--accent2);color:var(--accent2)}
 .flip.risk-btn:hover{background:var(--accent2);color:#000}
-.mmenu .risk-btn{margin-left:10px}
-.burger{display:none;flex-direction:column;gap:5px;background:none;border:0;padding:8px;cursor:pointer}
-.burger span{width:24px;height:2px;background:var(--accent);transition:.3s}
-.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}.burger.open span:nth-child(2){opacity:0}.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-.mmenu{display:none;flex-direction:column;gap:2px;padding:10px 24px 18px;border-top:1px solid var(--line);font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:1px;font-size:14px}
-.mmenu.open{display:flex}.mmenu a{padding:11px 0;border-bottom:1px solid var(--line)}.mmenu .flip{margin-top:14px;align-self:flex-start}
-.mmenu{flex-wrap:wrap}
 @media(max-width:640px){
   .bulb:nth-child(3n){display:none}
   section{padding:70px 0}
@@ -165,7 +172,8 @@ body.upside .term{background:#030710}
   .node:not(:last-child)::after{right:auto;left:50%;top:auto;bottom:-33px;width:2px;height:32px;background:linear-gradient(180deg,transparent,var(--accent),transparent);background-size:100% 200%;animation:runv 1.5s linear infinite}
   @keyframes runv{from{background-position:0 200%}to{background-position:0 -200%}}
 }
-@media(hover:none){.torch{display:none}}
+@media(hover:none){header h1{animation:title 9s infinite,sway 7s ease-in-out infinite}header h1.touching{animation:title 9s infinite}}
+@keyframes sway{0%,100%{transform:perspective(800px) rotateY(-9deg) rotateX(3deg)}50%{transform:perspective(800px) rotateY(9deg) rotateX(-3deg)}}
 
 /* ---- upside-down page ---- */
 #page.shake{animation:shake .55s linear}
@@ -195,12 +203,13 @@ body.flipped .back{display:block}
       <button class="flip" id="flip" title="Flip to the other side">⟲ Flip world</button>
       <button class="flip risk-btn" id="riskbtn" type="button">⚠ Try at risk</button>
     </div>
-    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <div class="mquick">
+      <button class="flip" id="flip3" type="button">⟲ Flip</button>
+      <button class="flip risk-btn" id="riskbtn3" type="button">⚠ Risk</button>
+    </div>
   </div>
-  <div class="mmenu" id="mmenu">
-    <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="Pranav_resume.pdf" target="_blank" rel="noopener">Resume</a><a href="#contact">Contact</a>
-    <button class="flip" id="flip2">⟲ Flip world</button>
-    <button class="flip risk-btn" id="riskbtn2" type="button">⚠ Try at risk</button>
+  <div class="mlinks">
+    <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#terminal">Terminal</a><a href="Pranav_resume.pdf" target="_blank" rel="noopener">Resume</a><a href="#contact">Contact</a>
   </div>
 </nav>
 
@@ -455,12 +464,9 @@ body.flipped .back{display:block}
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 })();
 
-/* mobile menu */
+/* mobile quick buttons */
 (function(){
-  const b=document.getElementById('burger'),m=document.getElementById('mmenu');
-  b.addEventListener('click',()=>{const o=m.classList.toggle('open');b.classList.toggle('open',o);b.setAttribute('aria-expanded',o)});
-  m.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{m.classList.remove('open');b.classList.remove('open')}));
-  document.getElementById('flip2').addEventListener('click',()=>document.getElementById('flip').click());
+  document.getElementById('flip3').addEventListener('click',()=>document.getElementById('flip').click());
 })();
 
 /* typing roles */
@@ -476,25 +482,32 @@ body.flipped .back{display:block}
   })();
 })();
 
-/* flashlight + tilt (desktop only) */
+/* flashlight + tilt (mouse and touch) */
 (function(){
-  const fine=matchMedia('(pointer:fine)').matches, calm=matchMedia('(prefers-reduced-motion:reduce)').matches;
-  if(!fine)return;
-  const root=document.documentElement;
-  addEventListener('mousemove',e=>{root.style.setProperty('--mx',e.clientX+'px');root.style.setProperty('--my',e.clientY+'px')},{passive:true});
+  const calm=matchMedia('(prefers-reduced-motion:reduce)').matches, root=document.documentElement;
+  function pos(x,y){root.style.setProperty('--mx',x+'px');root.style.setProperty('--my',y+'px')}
+  addEventListener('mousemove',e=>pos(e.clientX,e.clientY),{passive:true});
+  ['touchstart','touchmove'].forEach(t=>addEventListener(t,e=>{const f=e.touches[0];if(f)pos(f.clientX,f.clientY)},{passive:true}));
   if(calm)return;
   const hd=document.getElementById('top'),nm=hd.querySelector('h1');
-  hd.addEventListener('mousemove',e=>{
-    const r=nm.getBoundingClientRect(),x=(e.clientX-(r.left+r.width/2))/innerWidth,y=(e.clientY-(r.top+r.height/2))/innerHeight;
+  function tiltName(cx,cy){
+    const r=nm.getBoundingClientRect(),x=(cx-(r.left+r.width/2))/innerWidth,y=(cy-(r.top+r.height/2))/innerHeight;
     const rx=Math.max(-14,Math.min(14,-y*34)),ry=Math.max(-16,Math.min(16,x*40));
     nm.style.transform='perspective(800px) rotateX('+rx+'deg) rotateY('+ry+'deg)';
     nm.style.textShadow=(-ry*1.2)+'px '+(rx*1.2)+'px 18px color-mix(in srgb,var(--accent) 55%,transparent), 0 0 6px var(--accent)';
-  });
-  hd.addEventListener('mouseleave',()=>{nm.style.transform='';nm.style.textShadow=''});
+  }
+  function resetName(){nm.classList.remove('touching');nm.style.transform='';nm.style.textShadow=''}
+  hd.addEventListener('mousemove',e=>tiltName(e.clientX,e.clientY));
+  hd.addEventListener('mouseleave',resetName);
+  ['touchstart','touchmove'].forEach(t=>hd.addEventListener(t,e=>{const f=e.touches[0];if(f){nm.classList.add('touching');tiltName(f.clientX,f.clientY)}},{passive:true}));
+  ['touchend','touchcancel'].forEach(t=>hd.addEventListener(t,resetName,{passive:true}));
+  function tiltCard(c,cx,cy){const r=c.getBoundingClientRect(),x=(cx-r.left)/r.width-.5,y=(cy-r.top)/r.height-.5;
+    c.style.transform='perspective(900px) rotateY('+(x*5)+'deg) rotateX('+(-y*5)+'deg) translateY(-3px)'}
   document.querySelectorAll('.project').forEach(c=>{
-    c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
-      c.style.transform='perspective(900px) rotateY('+(x*5)+'deg) rotateX('+(-y*5)+'deg) translateY(-3px)'});
+    c.addEventListener('mousemove',e=>tiltCard(c,e.clientX,e.clientY));
     c.addEventListener('mouseleave',()=>{c.style.transform=''});
+    ['touchstart','touchmove'].forEach(t=>c.addEventListener(t,e=>{const f=e.touches[0];if(f)tiltCard(c,f.clientX,f.clientY)},{passive:true}));
+    ['touchend','touchcancel'].forEach(t=>c.addEventListener(t,()=>{c.style.transform=''},{passive:true}));
   });
 })();
 
@@ -562,7 +575,7 @@ document.getElementById('flip').addEventListener('click',()=>{
     pg.classList.add('shake');
     setTimeout(()=>{pg.classList.remove('shake');on?flipOn():flipOff();busy=false},550);
   }
-  ['riskbtn','riskbtn2'].forEach(id=>document.getElementById(id).addEventListener('click',()=>go(true)));
+  ['riskbtn','riskbtn3'].forEach(id=>document.getElementById(id).addEventListener('click',()=>go(true)));
   document.getElementById('back').addEventListener('click',()=>go(false));
   addEventListener('keydown',e=>{if(e.key==='Escape'&&b.classList.contains('flipped'))go(false)});
 })();
