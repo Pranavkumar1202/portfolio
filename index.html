@@ -556,15 +556,15 @@ document.getElementById('flip').addEventListener('click',()=>{
 /* turn the whole page upside down */
 (function(){
   const b=document.body,pg=document.getElementById('page'),calm=matchMedia('(prefers-reduced-motion:reduce)').matches;
-  let wasUp=false,busy=false;
+  let busy=false;
   function flipOn(){
-    wasUp=b.classList.contains('upside');b.classList.add('upside','flipped');
+    b.classList.add('flipped');
     document.documentElement.style.scrollBehavior='auto';
     scrollTo(0,document.documentElement.scrollHeight);
     document.documentElement.style.scrollBehavior='';
   }
   function flipOff(){
-    b.classList.remove('flipped');if(!wasUp)b.classList.remove('upside');
+    b.classList.remove('flipped');
     document.documentElement.style.scrollBehavior='auto';scrollTo(0,0);document.documentElement.style.scrollBehavior='';
   }
   function go(on){
